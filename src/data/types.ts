@@ -25,6 +25,7 @@ export interface ProjectEntry {
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
+  image?: string;
   featured: boolean;
 }
 

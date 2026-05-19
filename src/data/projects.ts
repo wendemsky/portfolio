@@ -9,6 +9,8 @@ export const projects: ProjectEntry[] = [
       "Implemented MCP OAuth 2.1/PKCE authorization server enabling Claude Desktop, Cursor, and VS Code Copilot integration; deployed on GKE with Terraform IaC, Prometheus/Grafana observability, and AST-based security validation across 201 automated tests",
     ],
     tech: ["Python", "FastAPI", "AG2", "PostgreSQL", "Redis", "Next.js", "Kubernetes", "Terraform"],
+    githubUrl: "https://github.com/wendemsky/kiln",
+    image: "/images/kiln-preview.png",
     featured: true,
   },
   {
@@ -18,6 +20,8 @@ export const projects: ProjectEntry[] = [
       "Designed a 5-tier distributed trading platform with real-time pricing engine, portfolio management, and automated advisory services; enforced security via JWT and resilience via circuit breaker patterns",
     ],
     tech: ["Angular", "Spring Boot", "Node.js", "SQLite", "TypeScript"],
+    githubUrl: "https://github.com/wendemsky/TradeNexus",
+    image: "/images/tradenexus-preview.png",
     featured: false,
   },
 ];
