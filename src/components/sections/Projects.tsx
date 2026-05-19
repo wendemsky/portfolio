@@ -28,7 +28,7 @@ export function Projects() {
           <SectionHeader title="Projects" />
         </AnimatedSection>
 
-        <div className="mt-8 md:grid md:grid-cols-[1fr_3fr] md:gap-8">
+        <div className="mt-8 md:grid md:grid-cols-[1fr_3fr] md:gap-8 md:items-start">
           {/* Desktop — left nav list */}
           <div className="hidden md:flex md:flex-col md:gap-2 self-start sticky top-24">
             {projects.map((project, i) => (
@@ -42,20 +42,18 @@ export function Projects() {
           </div>
 
           {/* Desktop — right detail panel */}
-          <div className="hidden md:block min-h-[540px]">
-            <div className="sticky top-24">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeProject.title}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.22, ease: EASE }}
-                >
-                  <ProjectDetail project={activeProject} />
-                </motion.div>
-              </AnimatePresence>
-            </div>
+          <div className="hidden md:block">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeProject.title}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.22, ease: EASE }}
+              >
+                <ProjectDetail project={activeProject} />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Mobile — list view */}
