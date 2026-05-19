@@ -4,6 +4,7 @@ export const projects: ProjectEntry[] = [
   {
     title: "Kiln",
     period: "Mar 2026",
+    hook: "Self-evolving AI tool registry that builds and hot-loads tools on demand.",
     bullets: [
       "Built a self-evolving AI tool registry where a Mistral Large planning agent decomposes natural-language requests into DAGs; a synthesis agent auto-generates tool specs and hot-loads implementations in ~15 seconds across 5 FastAPI microservices with zero downtime",
       "Implemented MCP OAuth 2.1/PKCE authorization server enabling Claude Desktop, Cursor, and VS Code Copilot integration; deployed on GKE with Terraform IaC, Prometheus/Grafana observability, and AST-based security validation across 201 automated tests",
@@ -16,12 +17,14 @@ export const projects: ProjectEntry[] = [
   {
     title: "Trade Nexus",
     period: "Dec 2024",
+    hook: "Distributed trading platform with real-time pricing and portfolio management.",
     bullets: [
       "Designed a 5-tier distributed trading platform with real-time pricing engine, portfolio management, and automated advisory services; enforced security via JWT and resilience via circuit breaker patterns",
     ],
     tech: ["Angular", "Spring Boot", "Node.js", "SQLite", "TypeScript"],
     githubUrl: "https://github.com/wendemsky/TradeNexus",
     image: "/images/tradenexus-preview.png",
+    imagePosition: "top",
     featured: false,
   },
 ];

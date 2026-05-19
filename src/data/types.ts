@@ -21,11 +21,13 @@ export interface ExperienceEntry {
 export interface ProjectEntry {
   title: string;
   period: string;
+  hook?: string;
   bullets: string[];
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
   image?: string;
+  imagePosition?: "center" | "top";
   featured: boolean;
 }
 
