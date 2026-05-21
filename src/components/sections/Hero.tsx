@@ -5,6 +5,7 @@ import { Mail, FileText, ArrowDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import { buttonVariants } from "@/components/ui/button";
 import { meta, socialLinks } from "@/data/meta";
+import { NetworkBackground } from "@/components/ui/NetworkBackground";
 import { cn } from "@/lib/utils";
 
 const iconMap = { GitHub: GithubIcon, LinkedIn: LinkedinIcon, Email: Mail };
@@ -12,17 +13,17 @@ const iconMap = { GitHub: GithubIcon, LinkedIn: LinkedinIcon, Email: Mail };
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center px-6">
+      <NetworkBackground />
       <div className="max-w-2xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-sm font-medium text-muted-foreground mb-4 tracking-widest uppercase">
-            Hello, I&apos;m
-          </p>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">{meta.name}</h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-6">{meta.tagline}</p>
+          <p className="font-mono text-sm text-muted-foreground tracking-wide mb-8">
+            {meta.tagline}
+          </p>
           <p className="text-muted-foreground max-w-lg mx-auto mb-10 leading-relaxed">
             {meta.summary}
           </p>
