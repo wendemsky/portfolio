@@ -7,7 +7,15 @@ import { TimelineItem } from "@/components/ui/TimelineItem";
 import { experiences } from "@/data/experience";
 
 export function Experience() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(new Set([0]));
+
+  function toggle(i: number) {
+    setExpandedIndices(prev => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i); else next.add(i);
+      return next;
+    });
+  }
 
   return (
     <section id="experience" className="py-24 px-6 bg-muted/30">
@@ -15,14 +23,14 @@ export function Experience() {
         <AnimatedSection>
           <SectionHeader title="Experience" />
         </AnimatedSection>
-        <div>
+        <div className="min-h-[320px]">
           {experiences.map((entry, i) => (
             <AnimatedSection key={entry.company} delay={i * 0.1}>
               <TimelineItem
                 entry={entry}
                 isLast={i === experiences.length - 1}
-                isExpanded={activeIndex === i}
-                onToggle={() => setActiveIndex(i === activeIndex ? -1 : i)}
+                isExpanded={expandedIndices.has(i)}
+                onToggle={() => toggle(i)}
               />
             </AnimatedSection>
           ))}
