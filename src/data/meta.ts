@@ -2,9 +2,9 @@ import type { SiteMetadata, SocialLink } from "./types";
 
 export const meta: SiteMetadata = {
   name: "Himanshu Maithani",
-  tagline: "Software Engineer",
+  tagline: "Backend · Distributed Systems · AI Infrastructure",
   summary:
-    "Software Engineer with 2+ years building production backend services, data pipelines, and full-stack applications at Fidelity and Samsung. Currently pursuing a Master of Computing at NUS and interning at SATS Ltd in Singapore.",
+    "I build backend infrastructure for distributed systems and AI — data pipelines, cloud architectures, and agent networks. Currently at SATS Ltd and pursuing a Master's at NUS.",
   email: "himanshumaithani2002@gmail.com",
   location: "Singapore",
   resumeUrl: "/resume.pdf",
