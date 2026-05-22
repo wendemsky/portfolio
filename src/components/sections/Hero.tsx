@@ -20,7 +20,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">{meta.name}</h1>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-4">{meta.name}</h1>
           <p className="font-mono text-sm text-muted-foreground tracking-wide mb-8">
             {meta.tagline}
           </p>
@@ -40,7 +40,7 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+              className={cn(buttonVariants({ variant: "ghost", size: "lg" }))}
             >
               Contact
             </a>

@@ -4,7 +4,7 @@ export const meta: SiteMetadata = {
   name: "Himanshu Maithani",
   tagline: "Backend · Distributed Systems · AI Infrastructure",
   summary:
-    "I build backend infrastructure for distributed systems and AI — data pipelines, cloud architectures, and agent networks. Currently at SATS Ltd and pursuing a Master's at NUS.",
+    "I build backend infrastructure for distributed systems and AI — data pipelines, cloud architectures, and agent networks. Previously SDE at Fidelity Investments and Research Intern at Samsung R&D. M.Sc. from NUS.",
   email: "himanshumaithani2002@gmail.com",
   location: "Singapore",
   resumeUrl: "/resume.pdf",
