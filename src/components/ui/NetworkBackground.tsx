@@ -2,10 +2,13 @@
 
 import { useEffect, useRef } from "react";
 
-const NODE_COUNT = 22;
-const MAX_DIST = 180;
-const SPEED = 0.15;
-const NODE_R = 1.8;
+const NODE_COUNT  = 36;
+const MAX_DIST    = 180;
+const SPEED       = 0.15;
+const NODE_R      = 2.5;
+const REPEL_RADIUS = 120;
+const REPEL_FORCE  = 0.04;
+const MAX_SPEED    = 0.55;
 
 interface Node {
   x: number;
@@ -32,6 +35,7 @@ function xFade(x: number, w: number): number {
 
 export function NetworkBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef  = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -39,7 +43,6 @@ export function NetworkBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Capture non-null references for use inside nested function declarations
     const cvs: HTMLCanvasElement = canvas;
     const context: CanvasRenderingContext2D = ctx;
 
@@ -76,11 +79,33 @@ export function NetworkBackground() {
           if (n.y < 0)         { n.y = 0;          n.vy = Math.abs(n.vy); }
           if (n.y > h)         { n.y = h;          n.vy = -Math.abs(n.vy); }
         }
+
+        const mouse = mouseRef.current;
+        if (mouse) {
+          for (const n of nodes) {
+            const dx = n.x - mouse.x;
+            const dy = n.y - mouse.y;
+            const d  = Math.sqrt(dx * dx + dy * dy);
+            if (d < REPEL_RADIUS && d > 0) {
+              const strength = REPEL_FORCE * (1 - d / REPEL_RADIUS);
+              n.vx += (dx / d) * strength;
+              n.vy += (dy / d) * strength;
+            }
+          }
+        }
+
+        for (const n of nodes) {
+          const speed = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+          if (speed > MAX_SPEED) {
+            n.vx = (n.vx / speed) * MAX_SPEED;
+            n.vy = (n.vy / speed) * MAX_SPEED;
+          }
+        }
       }
 
       const dark = document.documentElement.classList.contains("dark");
       const [r, g, b] = dark ? [255, 255, 255] : [0, 0, 0];
-      const base = dark ? 0.06 : 0.04;
+      const base = dark ? 0.06 : 0.05;
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -101,7 +126,7 @@ export function NetworkBackground() {
       }
 
       for (const n of nodes) {
-        const a = base * 1.8 * xFade(n.x, w);
+        const a = base * 2.8 * xFade(n.x, w);
         if (a < 0.003) continue;
         context.fillStyle = `rgba(${r},${g},${b},${a})`;
         context.beginPath();
@@ -112,15 +137,22 @@ export function NetworkBackground() {
       raf = requestAnimationFrame(tick);
     }
 
+    function handleMouseMove(e: MouseEvent) {
+      const rect = cvs.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
     resize();
     raf = requestAnimationFrame(tick);
 
     const ro = new ResizeObserver(resize);
     ro.observe(cvs);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
