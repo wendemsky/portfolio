@@ -32,12 +32,13 @@ export function Projects() {
           {/* Desktop — left nav list */}
           <div className="hidden md:flex md:flex-col md:gap-2 self-start sticky top-24">
             {projects.map((project, i) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                isActive={i === activeIndex}
-                onClick={() => handleSelect(i)}
-              />
+              <AnimatedSection key={project.title} delay={i * 0.1}>
+                <ProjectCard
+                  project={project}
+                  isActive={i === activeIndex}
+                  onClick={() => handleSelect(i)}
+                />
+              </AnimatedSection>
             ))}
           </div>
 
@@ -60,15 +61,16 @@ export function Projects() {
           {mobileView === "list" && (
             <div className="flex flex-col gap-3 md:hidden">
               {projects.map((project, i) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  isActive={false}
-                  onClick={() => {
-                    setActiveIndex(i);
-                    setMobileView("detail");
-                  }}
-                />
+                <AnimatedSection key={project.title} delay={i * 0.1}>
+                  <ProjectCard
+                    project={project}
+                    isActive={false}
+                    onClick={() => {
+                      setActiveIndex(i);
+                      setMobileView("detail");
+                    }}
+                  />
+                </AnimatedSection>
               ))}
             </div>
           )}

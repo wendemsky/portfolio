@@ -16,7 +16,7 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
         "rounded-xl overflow-hidden cursor-pointer transition-all duration-200",
         isActive
           ? "ring-1 ring-primary/60 opacity-100"
-          : "opacity-50 hover:opacity-75"
+          : "opacity-70 hover:opacity-100"
       )}
     >
       {project.image && (
