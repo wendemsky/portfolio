@@ -13,7 +13,7 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
     <div
       onClick={onClick}
       className={cn(
-        "rounded-xl overflow-hidden cursor-pointer transition-all duration-200",
+        "group rounded-xl overflow-hidden cursor-pointer transition-all duration-200",
         isActive
           ? "ring-1 ring-primary/60 opacity-100"
           : "opacity-70 hover:opacity-100"
@@ -25,7 +25,11 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
             src={project.image}
             alt={project.title}
             fill
-            className={cn("object-cover", project.imagePosition === "top" ? "object-top" : "object-center")}
+            className={cn(
+              "object-cover transition-[filter] duration-300",
+              project.imagePosition === "top" ? "object-top" : "object-center",
+              isActive ? "saturate-100" : "saturate-[0.55] group-hover:saturate-[0.85]"
+            )}
             sizes="(max-width: 768px) 100vw, 25vw"
           />
         </div>
