@@ -9,9 +9,9 @@ export function About() {
           <SectionHeader title="About" />
           <div className="max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m a Software Engineer currently pursuing a Master of Computing (Computer
-              Science) at the National University of Singapore, while working as a Technology
-              Solutions Intern at SATS Ltd.
+              I&apos;m a Software Engineer with experience building production systems at Fidelity
+              Investments and Samsung R&D Bangalore. I recently completed a Master of Computing
+              (Computer Science) at the National University of Singapore.
             </p>
             <p>
               With 2+ years of experience at Fidelity Investments and Samsung R&D, I&apos;ve built
@@ -22,7 +22,7 @@ export function About() {
             </p>
             <p>
               I&apos;m particularly interested in distributed systems, backend infrastructure, and
-              applied AI — and open to full-time opportunities from mid-2026.
+              applied AI — and actively looking for full-time opportunities.
             </p>
           </div>
         </AnimatedSection>
