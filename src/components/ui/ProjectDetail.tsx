@@ -9,7 +9,7 @@ import { GithubIcon } from "@/components/ui/SocialIcons";
 import { TechBadge } from "./TechBadge";
 import type { ProjectEntry } from "@/data/types";
 
-const COLLAPSED_H = 80;
+const COLLAPSED_H = 160;
 
 interface ProjectDetailProps {
   project: ProjectEntry;
