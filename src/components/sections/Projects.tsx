@@ -57,7 +57,7 @@ export function Projects() {
             <div
               ref={navRef}
               onScroll={updateFades}
-              className="flex flex-col gap-2 max-h-[calc(100vh-14rem)] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex flex-col gap-2 max-h-[calc(100vh-14rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {projects.map((project, i) => (
                 <AnimatedSection key={project.title} delay={i * 0.1}>
