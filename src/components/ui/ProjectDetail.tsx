@@ -3,13 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { GithubIcon } from "@/components/ui/SocialIcons";
 import { TechBadge } from "./TechBadge";
 import type { ProjectEntry } from "@/data/types";
 
-const COLLAPSED_H = 80;
+const COLLAPSED_H = 160;
 
 interface ProjectDetailProps {
   project: ProjectEntry;
@@ -31,11 +31,12 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   return (
     <div className="flex flex-col gap-5">
       {project.image && (
-        <div className="relative h-64 w-full overflow-hidden rounded-xl">
+        <div className="relative h-48 w-full overflow-hidden rounded-xl">
           <Image
             src={project.image}
             alt={`${project.title} preview`}
             fill
+            priority
             className={cn(
               "object-cover saturate-[0.85]",
               project.imagePosition === "top" ? "object-top" : "object-center"
@@ -46,22 +47,33 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       )}
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div>
+          <div className="flex items-center gap-2">
             <h3 className="text-xl font-semibold text-foreground">{project.title}</h3>
-            <p className="text-xs text-muted-foreground mt-0.5">{project.period}</p>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub repository"
+                className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
+              >
+                <GithubIcon size={16} />
+              </a>
+            )}
+            {project.paperUrl && (
+              <a
+                href={project.paperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Research paper"
+                className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
+              >
+                <FileText size={16} />
+              </a>
+            )}
           </div>
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub repository"
-              className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0 mt-0.5"
-            >
-              <GithubIcon size={18} />
-            </a>
-          )}
+          <p className="text-xs text-muted-foreground mt-0.5">{project.period}</p>
         </div>
 
         <div className="flex flex-col gap-2">

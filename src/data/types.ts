@@ -26,6 +26,7 @@ export interface ProjectEntry {
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
+  paperUrl?: string;
   image?: string;
   imagePosition?: "center" | "top";
   featured: boolean;

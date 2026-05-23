@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
@@ -14,12 +14,31 @@ const EASE = [0.4, 0, 0.2, 1] as const;
 export function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mobileView, setMobileView] = useState<"list" | "detail">("list");
+  const [showTopFade, setShowTopFade] = useState(false);
+  const [showBottomFade, setShowBottomFade] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   const activeProject = projects[activeIndex];
 
   const handleSelect = (i: number) => {
     if (i !== activeIndex) setActiveIndex(i);
   };
+
+  const updateFades = useCallback(() => {
+    const el = navRef.current;
+    if (!el) return;
+    setShowTopFade(el.scrollTop > 8);
+    setShowBottomFade(el.scrollTop < el.scrollHeight - el.clientHeight - 8);
+  }, []);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    updateFades();
+    const observer = new ResizeObserver(updateFades);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [updateFades]);
 
   return (
     <section id="projects" className="py-24 px-6">
@@ -30,15 +49,30 @@ export function Projects() {
 
         <div className="mt-8 md:grid md:grid-cols-[1fr_3fr] md:gap-8 md:items-start">
           {/* Desktop — left nav list */}
-          <div className="hidden md:flex md:flex-col md:gap-2 self-start sticky top-24">
-            {projects.map((project, i) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                isActive={i === activeIndex}
-                onClick={() => handleSelect(i)}
-              />
-            ))}
+          <div className="hidden md:block self-start sticky top-24 relative">
+            <div
+              className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-background to-transparent pointer-events-none z-10 transition-opacity duration-300"
+              style={{ opacity: showTopFade ? 1 : 0 }}
+            />
+            <div
+              ref={navRef}
+              onScroll={updateFades}
+              className="flex flex-col gap-2 max-h-[calc(100vh-14rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {projects.map((project, i) => (
+                <AnimatedSection key={project.title} delay={i * 0.1}>
+                  <ProjectCard
+                    project={project}
+                    isActive={i === activeIndex}
+                    onClick={() => handleSelect(i)}
+                  />
+                </AnimatedSection>
+              ))}
+            </div>
+            <div
+              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none z-10 transition-opacity duration-300"
+              style={{ opacity: showBottomFade ? 1 : 0 }}
+            />
           </div>
 
           {/* Desktop — right detail panel */}
@@ -60,15 +94,16 @@ export function Projects() {
           {mobileView === "list" && (
             <div className="flex flex-col gap-3 md:hidden">
               {projects.map((project, i) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  isActive={false}
-                  onClick={() => {
-                    setActiveIndex(i);
-                    setMobileView("detail");
-                  }}
-                />
+                <AnimatedSection key={project.title} delay={i * 0.1}>
+                  <ProjectCard
+                    project={project}
+                    isActive={false}
+                    onClick={() => {
+                      setActiveIndex(i);
+                      setMobileView("detail");
+                    }}
+                  />
+                </AnimatedSection>
               ))}
             </div>
           )}
