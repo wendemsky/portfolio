@@ -12,10 +12,7 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
   return (
     <div
       onClick={onClick}
-      className={cn(
-        "group relative cursor-pointer transition-all duration-300",
-        isActive ? "scale-[1.015]" : ""
-      )}
+      className="group relative cursor-pointer"
     >
       <span
         className={cn(
@@ -28,7 +25,7 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
         className={cn(
           "rounded-xl overflow-hidden transition-all duration-300",
           isActive
-            ? "ring-1 ring-primary/30 shadow-lg"
+            ? "shadow-lg"
             : "opacity-70 hover:opacity-100 hover:shadow-sm"
         )}
       >
