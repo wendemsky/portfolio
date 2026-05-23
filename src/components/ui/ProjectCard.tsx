@@ -13,10 +13,10 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
     <div
       onClick={onClick}
       className={cn(
-        "group rounded-xl overflow-hidden cursor-pointer transition-all duration-200",
+        "group rounded-xl overflow-hidden cursor-pointer transition-all duration-300",
         isActive
-          ? "ring-1 ring-primary/60 opacity-100"
-          : "opacity-70 hover:opacity-100"
+          ? "scale-[1.02] ring-1 ring-primary/20 shadow-lg border-l-[3px] border-primary opacity-100"
+          : "opacity-70 hover:opacity-95 hover:shadow-sm"
       )}
     >
       {project.image && (
@@ -34,7 +34,7 @@ export function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
           />
         </div>
       )}
-      <div className={cn("px-3 py-2.5 bg-card", isActive && "bg-accent/20")}>
+      <div className={cn("px-3 py-2.5", isActive ? "bg-accent/30" : "bg-card")}>
         <p className="font-medium text-sm text-foreground leading-tight">{project.title}</p>
         {project.hook && (
           <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{project.hook}</p>
