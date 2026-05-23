@@ -37,7 +37,7 @@ export const projects: ProjectEntry[] = [
     ],
     tech: ["Python", "PostgreSQL", "ProvSQL", "SQL"],
     githubUrl: "https://github.com/wendemsky/pg-whynot",
-    paperUrl: "/why_not_provenance_semiring.pdf",
+    paperUrl: "/why_not_provenance_firing_rules_semiring.pdf",
     image: "/images/why-not-provenance-preview.png",
     imagePosition: "top",
     featured: false,
