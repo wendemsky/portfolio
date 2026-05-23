@@ -30,7 +30,7 @@ export function Projects() {
 
         <div className="mt-8 md:grid md:grid-cols-[1fr_3fr] md:gap-8 md:items-start">
           {/* Desktop — left nav list */}
-          <div className="hidden md:flex md:flex-col md:gap-2 self-start sticky top-24">
+          <div className="hidden md:flex md:flex-col md:gap-2 self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
             {projects.map((project, i) => (
               <AnimatedSection key={project.title} delay={i * 0.1}>
                 <ProjectCard
