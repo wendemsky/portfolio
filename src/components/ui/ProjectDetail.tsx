@@ -36,6 +36,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             src={project.image}
             alt={`${project.title} preview`}
             fill
+            priority
             className={cn(
               "object-cover saturate-[0.85]",
               project.imagePosition === "top" ? "object-top" : "object-center"
