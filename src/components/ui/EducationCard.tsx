@@ -14,7 +14,7 @@ export function EducationCard({ entry }: EducationCardProps) {
       />
       <div className="p-6 pl-7">
         <div className="flex items-start justify-between gap-4">
-          <div className="relative h-10 w-32 flex-shrink-0">
+          <div className="relative h-7 w-28 flex-shrink-0">
             <Image
               src={entry.logo}
               alt={entry.abbreviation}
