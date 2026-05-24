@@ -15,22 +15,20 @@ export function EducationCard({ entry }: EducationCardProps) {
       <div className="p-6 pl-7">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 rounded-md border border-border bg-white px-2.5 py-1.5 dark:bg-white/95">
-              <div className="relative h-7 w-24">
-                <Image
-                  src={entry.logo}
-                  alt={entry.abbreviation}
-                  fill
-                  className="object-contain saturate-[0.8]"
-                />
-              </div>
+            <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
+              <Image
+                src={entry.logo}
+                alt={entry.abbreviation}
+                fill
+                className="object-cover object-left mix-blend-multiply dark:mix-blend-normal dark:grayscale dark:invert"
+              />
             </div>
             <div>
               <h3 className="font-semibold text-foreground">{entry.institution}</h3>
               <p className="text-sm text-muted-foreground mt-0.5">{entry.degree}</p>
             </div>
           </div>
-          <div className="sm:text-right flex-shrink-0 pl-[112px] sm:pl-0">
+          <div className="sm:text-right flex-shrink-0 pl-16 sm:pl-0">
             <p className="text-sm text-muted-foreground">{entry.period}</p>
             <p className="text-xs text-muted-foreground">{entry.location}</p>
           </div>
