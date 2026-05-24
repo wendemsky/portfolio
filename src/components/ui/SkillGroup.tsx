@@ -13,7 +13,12 @@ export function SkillGroup({ group }: SkillGroupProps) {
       </h3>
       <div className="flex flex-wrap gap-2">
         {group.items.map((item) => (
-          <SkillBadge key={item} label={item} />
+          <SkillBadge
+            key={item.name}
+            label={item.name}
+            icon={item.icon}
+            featured={item.featured}
+          />
         ))}
       </div>
     </div>

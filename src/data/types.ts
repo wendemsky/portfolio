@@ -1,3 +1,5 @@
+import type { IconType } from "react-icons";
+
 export interface NavLink {
   label: string;
   href: string;
@@ -32,17 +34,26 @@ export interface ProjectEntry {
   featured: boolean;
 }
 
+export interface SkillItem {
+  name: string;
+  icon?: IconType;
+  featured?: boolean;
+}
+
 export interface SkillCategory {
   category: string;
-  items: string[];
+  items: SkillItem[];
 }
 
 export interface EducationEntry {
   institution: string;
+  abbreviation: string;
+  logo: string;
   degree: string;
   period: string;
   location: string;
   gpa: string;
+  focusAreas: string[];
 }
 
 export interface SiteMetadata {
