@@ -17,9 +17,9 @@ export function Contact() {
         <AnimatedSection>
           <SectionHeader
             title="Get in Touch"
-            subtitle="I build distributed systems, cloud infrastructure, and AI platforms. If you're working on challenging backend or infrastructure problems, I'd love to connect — open to full-time roles from mid-2026."
+            subtitle="Interested in backend infrastructure, distributed systems, data platforms, and AI engineering. Open to full-time opportunities from mid-2026."
           />
-          <div className="flex flex-wrap items-center gap-3 mb-16">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${meta.email}`}
               className={cn(buttonVariants({ size: "lg" }), "gap-2")}
@@ -27,7 +27,6 @@ export function Contact() {
               <Mail size={16} />
               Send Email
             </a>
-            <span className="text-muted-foreground/40 select-none" aria-hidden="true">—</span>
             <div className="flex items-center gap-3">
               {socialLinks
                 .filter((l) => l.platform !== "Email")
@@ -48,11 +47,6 @@ export function Contact() {
                   );
                 })}
             </div>
-          </div>
-          <div className="pt-8 border-t border-border/50">
-            <p className="text-xs text-muted-foreground/60">
-              Designed and developed by Himanshu Maithani
-            </p>
           </div>
         </AnimatedSection>
       </div>
