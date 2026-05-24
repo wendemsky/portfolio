@@ -51,7 +51,7 @@ export const projects: ProjectEntry[] = [
       "Achieved AUPRC of 0.478 on a 13,426-sample Kaggle holdout — 155% improvement over the best baseline (LOF, AUPRC 0.1955) — driven by amortization-gated ensemble strategies with strict data leakage prevention",
     ],
     tech: ["Python", "scikit-learn", "pandas", "numpy", "scipy"],
-    githubUrl: "https://github.com/wendemsky/CS5344---Track-2-Finance",
+    githubUrl: "https://github.com/wendemsky/CS5344-Loan-Anomaly-Detection",
     paperUrl: "/loan_anomaly_detection.pdf",
     image: "/images/loan-anomaly-preview.png",
     imagePosition: "top",
