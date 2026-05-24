@@ -14,14 +14,13 @@ export function EducationCard({ entry }: EducationCardProps) {
       />
       <div className="p-6 pl-7">
         <div className="flex items-start justify-between gap-4">
-          <div className="relative h-7 w-28 flex-shrink-0">
-            <Image
-              src={entry.logo}
-              alt={entry.abbreviation}
-              fill
-              className="object-contain object-left grayscale mix-blend-multiply dark:mix-blend-normal dark:invert opacity-80 dark:opacity-55"
-            />
-          </div>
+          <Image
+            src={entry.logo}
+            alt={entry.abbreviation}
+            width={entry.logoWidth}
+            height={entry.logoHeight}
+            className="h-7 w-auto flex-shrink-0 grayscale mix-blend-multiply dark:mix-blend-normal dark:invert opacity-80 dark:opacity-55"
+          />
           <div className="text-right flex-shrink-0">
             <p className="text-sm text-muted-foreground">{entry.period}</p>
             <p className="text-xs text-muted-foreground">{entry.location}</p>

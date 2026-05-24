@@ -49,6 +49,8 @@ export interface EducationEntry {
   institution: string;
   abbreviation: string;
   logo: string;
+  logoWidth: number;
+  logoHeight: number;
   accentColor: string;
   degree: string;
   period: string;
