@@ -13,7 +13,7 @@ Read it fully before touching any file.
 - **Styling**: Tailwind CSS v4 — CSS-first config, no `tailwind.config.js`
 - **Components**: shadcn/ui (Default style, Neutral base) — add via `npx shadcn@latest add <component>`
 - **Animation**: Framer Motion 12
-- **Icons**: Lucide React
+- **Icons**: Lucide React, react-icons (SI + FA6 for brand/skill icons)
 
 ---
 
@@ -24,7 +24,7 @@ src/
   app/              # Next.js App Router — pages and layouts
   components/
     ui/             # shadcn/ui primitives — never edit manually
-    sections/       # Page sections: Hero, About, Projects, Contact
+    sections/       # Page sections: Hero, Experience, Projects, Skills, Education, Contact
                     # Each is a self-contained component; data comes from src/data/
     layout/         # Header, Footer, Nav
   data/             # Portfolio content as TypeScript constants — source of truth for copy
