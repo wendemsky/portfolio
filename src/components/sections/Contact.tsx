@@ -3,6 +3,7 @@ import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { buttonVariants } from "@/components/ui/button";
+import { NetworkBackground } from "@/components/ui/NetworkBackground";
 import { meta, socialLinks } from "@/data/meta";
 import { cn } from "@/lib/utils";
 
@@ -10,14 +11,15 @@ const iconMap = { GitHub: GithubIcon, LinkedIn: LinkedinIcon, Email: Mail };
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 bg-muted/30">
-      <div className="mx-auto max-w-5xl">
+    <section id="contact" className="relative py-24 px-6 bg-muted/30 overflow-hidden">
+      <NetworkBackground />
+      <div className="mx-auto max-w-5xl relative">
         <AnimatedSection>
           <SectionHeader
             title="Get in Touch"
-            subtitle="Open to full-time opportunities from mid-2026. Feel free to reach out."
+            subtitle="Interested in backend infrastructure, distributed systems, data platforms, and AI engineering. Open to full-time opportunities from mid-2026."
           />
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${meta.email}`}
               className={cn(buttonVariants({ size: "lg" }), "gap-2")}
@@ -25,7 +27,7 @@ export function Contact() {
               <Mail size={16} />
               Send Email
             </a>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3">
               {socialLinks
                 .filter((l) => l.platform !== "Email")
                 .map((link) => {
@@ -37,9 +39,9 @@ export function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={link.ariaLabel}
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className={cn(buttonVariants({ variant: "outline", size: "default" }), "gap-2")}
                     >
-                      <Icon size={18} />
+                      <Icon size={16} />
                       {link.platform}
                     </a>
                   );
