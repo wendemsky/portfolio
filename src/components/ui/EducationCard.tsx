@@ -44,11 +44,18 @@ export function EducationCard({ entry }: EducationCardProps) {
 
         <div className="mt-4 border-t border-border pt-4">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            Specialisations
+            Focus Areas
           </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">
-            {entry.focusAreas.join(" · ")}
-          </p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {entry.focusAreas.map((area) => (
+              <span
+                key={area}
+                className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm text-foreground/70"
+              >
+                {area}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
