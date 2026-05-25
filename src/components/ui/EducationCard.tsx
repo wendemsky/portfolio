@@ -13,7 +13,7 @@ export function EducationCard({ entry }: EducationCardProps) {
         style={{ backgroundColor: entry.accentColor }}
       />
       <div className="p-6 pl-7">
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           <div className="flex items-start gap-3.5">
             <div className="mt-0.5 flex-shrink-0">
               <Image
@@ -29,7 +29,7 @@ export function EducationCard({ entry }: EducationCardProps) {
               <p className="mt-0.5 text-sm text-muted-foreground">{entry.degree}</p>
             </div>
           </div>
-          <div className="flex-shrink-0 text-right">
+          <div className="flex-shrink-0 sm:text-right">
             <p className="text-sm text-muted-foreground">{entry.period}</p>
             <p className="text-xs text-muted-foreground">{entry.location}</p>
           </div>
